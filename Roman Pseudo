@@ -1,0 +1,41 @@
+//Input the numerals one by one
+out_num <- 0
+prev_numeral <- ''
+REPEAT
+    INPUT next_numeral
+    CASE next_numeral OF
+        'M': IF prev_numeral = 'C' THEN
+                out_num <- out_num + 800
+             ELSE
+                out_num <- out_num + 1000
+             ENDIF
+        'D': IF prev_numeral = 'C' THEN
+                out_num <- out_num + 300
+             ELSE
+                out_num <- out_num + 500
+             ENDIF
+        'C': IF prev_numeral = 'X' THEN
+                out_num <- out_num + 80 //10 already added
+             ELSE
+                out_num <- out_num + 100
+             ENDIF
+        'L': IF prev_numeral = 'X' THEN
+                out_num <- out_num + 30
+             ELSE
+                out_num <- out_num + 50
+             ENDIF
+        'X': IF prev_numeral = 'I' THEN
+                out_num <- out_num + 8
+             ELSE
+                out_num <- out_num + 10
+             ENDIF
+        'V': IF prev_numeral = 'I' THEN
+                out_num <- out_num + 3
+             ELSE
+                out_num <- out_num + 5
+             ENDIF
+        'I': out_num <- out_num + 1
+    ENDCASE
+    prev_numeral <- next_numeral
+UNTIL next_numeral = A   // Rogue value
+PRINT out_num
